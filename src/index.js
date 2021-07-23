@@ -30,7 +30,9 @@ function getContent(text, type) {
         editor = monaco.editor.create(document.getElementById('editor'), {
           model: null,
         });
-        var newModel = monaco.editor.createModel(\`${text}\`, \`${type}\`);
+        var newModel = monaco.editor.createModel(\`${text
+          .replaceAll('\\', '\\\\')
+          .replaceAll('`', '\\`')}\`, \`${type}\`);
         editor.setModel(newModel);
       });
   
